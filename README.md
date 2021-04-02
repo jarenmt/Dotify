@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Dotify
-=======
 # Dotify
 
 This is a music listening proof of concept screen that keeps track of user and number of plays on a song.
@@ -11,4 +8,3 @@ This is a music listening proof of concept screen that keeps track of user and n
 
 ## Extra Credit Attempted
 - #1
->>>>>>> 2ff97dac3cd95289606fe5f58dba10d195a15ccc
