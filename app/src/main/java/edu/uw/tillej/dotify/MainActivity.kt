@@ -1,5 +1,6 @@
 package edu.uw.tillej.dotify
 
+import android.graphics.Color
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -25,12 +27,11 @@ class MainActivity : AppCompatActivity() {
 
 
         var changeUserNameButton = findViewById<Button>(R.id.changeUserButton)
-//        changeUserNameButton.setOnFocusChangeListener{ view: View, b: Boolean ->
-//            changeUserNameButton.isClickable = userNameEditView.text.toString().trim().isNotEmpty()
-//        }
-        changeUserNameButton.addTextChangedListener{
-            changeUserNameButton.isClickable = userNameEditView.text.toString().trim().isNotEmpty()
-        }
+
+        userNameEditView.addTextChangedListener(onTextChanged = { c: CharSequence?, _: Int, _: Int, _: Int ->
+            changeUserNameButton.isEnabled = userNameEditView.text.toString().trim().isNotEmpty()
+            }
+        )
         changeUserNameButton.setOnClickListener{
             changeUserNameClicked(changeUserNameButton)
         }
@@ -38,6 +39,13 @@ class MainActivity : AppCompatActivity() {
         var playsNumber = findViewById<TextView>(R.id.plays)
 
         playsNumber.text = randomPlays.toString()
+
+        val albumCover = findViewById<ImageView>(R.id.albumCover)
+        albumCover.setOnLongClickListener{
+            var color = Color.argb(Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256))
+            playsNumber.setTextColor(color)
+            true
+        }
 
         val playButton = findViewById<ImageView>(R.id.playButton)
         playButton.setOnClickListener{
@@ -56,10 +64,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun changeUserNameClicked(btn: Button) {
+    private fun changeUserNameClicked(btn: Button) {
       if (userNameEditView.text.toString().isNotEmpty()) {
           editUser = editUser.not()
-          if (editUser == true) {
+          if (editUser) {
               btn.text = "Apply"
               userNameEditView.visibility = View.VISIBLE
               userNameTextView.visibility = View.GONE
@@ -72,22 +80,23 @@ class MainActivity : AppCompatActivity() {
       }
     }
 
-//    git remote add origin https://github.com/jarenmt/Dotify.git
-//git branch -M main
-//git push -u origin main
 
-    fun playButtonClicked(plays: TextView): TextView {
+    private fun playButtonClicked(plays: TextView): TextView {
         var currentPlays = plays.text.toString().toInt()
         plays.text = (currentPlays + 1).toString()
         return plays
     }
 
-    fun prevButtonClicked() {
+    private fun prevButtonClicked() {
         Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
     }
 
-    fun nextButtonClicked() {
+    private fun nextButtonClicked() {
         Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
 
     }
+}
+
+private fun albumLongClick(function: (playsNumber: TextView) -> Unit) {
+
 }
