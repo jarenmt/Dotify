@@ -69,8 +69,6 @@ class MainActivity : AppCompatActivity() {
               userNameEditView.visibility = View.GONE
               userNameTextView.visibility = View.VISIBLE
           }
-      } else {
-          btn.isClickable = false
       }
     }
 
