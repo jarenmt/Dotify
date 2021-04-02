@@ -8,4 +8,4 @@ This is a music listening proof of concept screen that keeps track of user and n
 
 ## Extra Credit Attempted
 - #1 Disabling user name change for empty user names
-- -#2 Long click on album changes plays color
+- #2 Long click on album changes plays color
