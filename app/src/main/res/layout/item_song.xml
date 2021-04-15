@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:foreground="?selectableItemBackground"
+    android:id="@+id/item_song">
+
+    <ImageView
+        android:id="@+id/svAlbumCover"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+
+        <TextView
+            android:id="@+id/svSongName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name of person"
+            android:textSize="20sp"
+            android:layout_marginStart="12dp"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/svArtistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name of person"
+            android:textSize="20sp"
+            android:layout_marginStart="12dp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
