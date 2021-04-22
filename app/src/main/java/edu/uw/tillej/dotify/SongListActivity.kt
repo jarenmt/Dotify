@@ -32,6 +32,7 @@ class SongListActivity : AppCompatActivity() {
                 adapter.updateSongs(currentSongsList.toMutableList().shuffled())
             }
 
+            title = getString(R.string.songs_list_title)
 
             adapter.songOnClickListener = { _: Int, song: Song ->
 //                songSelected = true
