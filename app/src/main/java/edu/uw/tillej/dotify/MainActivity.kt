@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         with(binding) {
 
 //        userNameEditView = findViewById(R.id.editUserName)
@@ -100,6 +102,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         }
+
+
     }
 
     private fun changeUserNameClicked(btn: Button) {
@@ -132,6 +136,11 @@ class MainActivity : AppCompatActivity() {
     private fun nextButtonClicked() {
         Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 }
 
