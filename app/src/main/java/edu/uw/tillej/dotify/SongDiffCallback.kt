@@ -21,6 +21,10 @@ class SongDiffCallback(private val newSongs: List<Song>, private val oldSongs: L
 
         return newContents.artist == oldContents.artist && newContents.title == oldContents.title && newContents.smallImageID == oldContents.smallImageID &&
                 newContents.largeImageID == oldContents.largeImageID
+
+        // we could override equals to
+        // areContents the same only called if areItems the Same true
+        // newContents == oldContents works too.
     }
 
 }
