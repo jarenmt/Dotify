@@ -1,11 +1,10 @@
 # Dotify
 
-This is a music listening proof of concept screen that keeps track of user and number of plays on a song.
+This app now keeps track of songs and plays and has a settings activity with 3 fragments, About, Profile, and Statistics
 
 # Screenshot 
-<image alt="Pic of cat" src="./Screen Shot 2021-04-02 at 1.28.03 AM.png" height="500" />
+<image alt="Pic of cat" src="./Screen Shot 2021-04-29 at 2.50.33 AM.png" height="500" />
 
 
 ## Extra Credit Attempted
-- #1 Disabling user name change for empty user names
-- #2 Long click on album changes plays color
+- None

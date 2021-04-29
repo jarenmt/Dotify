@@ -1,88 +1,92 @@
 package edu.uw.tillej.dotify
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doAfterTextChanged
+import com.ericchee.songdataprovider.Song
+import edu.uw.tillej.dotify.databinding.ActivityMainBinding
 import kotlin.random.Random
+
+private const val SONG = "song"
+
+fun navigateToMainActivity(context: Context, song: Song) = with(context) {
+    // take the person object send it to
+
+    val intent = Intent(this, MainActivity::class.java).apply { // declare to launch PersonDetailActivity
+        val bundle = Bundle().apply {
+
+//             Use parcelable for passing custom objects
+            putParcelable(SONG, song)
+        }
+        putExtras(bundle)
+    }
+
+    startActivity(intent)
+}
 
 class MainActivity : AppCompatActivity() {
 
-    private var randomPlays = Random.nextInt(69419, 69421)
-    private lateinit var userNameEditView: EditText
-    private lateinit var userNameTextView: TextView
+    private lateinit var binding: ActivityMainBinding
+    private var totalPlays = 0;
     private  var editUser = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        userNameEditView = findViewById(R.id.editUserName)
-        userNameTextView = findViewById(R.id.textViewUserName)
-        userNameEditView.setText(userNameTextView.text) // sets default text
-
-
-        var changeUserNameButton = findViewById<Button>(R.id.changeUserButton)
-
-        userNameEditView.addTextChangedListener(onTextChanged = { c: CharSequence?, _: Int, _: Int, _: Int ->
-            changeUserNameButton.isEnabled = userNameEditView.text.toString().trim().isNotEmpty()
+        binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        with(binding) {
+            var randomPlays = Random.nextInt(0, 100)
+            totalPlays = randomPlays
+            if (savedInstanceState != null) {
+                totalPlays = savedInstanceState.getInt("plays", 0)
             }
-        )
-        changeUserNameButton.setOnClickListener{
-            changeUserNameClicked(changeUserNameButton)
-        }
 
-        var playsNumber = findViewById<TextView>(R.id.plays)
+            val song: Song? = intent.getParcelableExtra<Song>(SONG)
 
-        playsNumber.text = randomPlays.toString()
+            song?.let { albumCover.setImageResource(it.largeImageID) }
+            song?.let { artist.text = song.artist }
+            song?.let { songTitle.text = song.title }
 
-        val albumCover = findViewById<ImageView>(R.id.albumCover)
+            plays.text = totalPlays.toString()
+
+            settings.setOnClickListener{
+                song?.let { it1 -> navigateToSettingsActivity(this@MainActivity, it1, totalPlays) }
+            }
+
         albumCover.setOnLongClickListener{
             var color = Color.argb(Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256))
-            playsNumber.setTextColor(color)
+            plays.setTextColor(color)
             true
         }
 
-        val playButton = findViewById<ImageView>(R.id.playButton)
         playButton.setOnClickListener{
-            playsNumber = playButtonClicked(playsNumber)
+            playButtonClicked(plays)
         }
 
-        val prevButton = findViewById<ImageView>(R.id.previousButton)
-        prevButton.setOnClickListener{
+            previousButton.setOnClickListener{
             prevButtonClicked()
         }
-        val nextButton = findViewById<ImageView>(R.id.nextButton)
         nextButton.setOnClickListener{
             nextButtonClicked()
         }
 
-
+        }
     }
 
-    private fun changeUserNameClicked(btn: Button) {
-      if (userNameEditView.text.toString().isNotEmpty()) {
-          editUser = editUser.not()
-          if (editUser) {
-              btn.text = "Apply"
-              userNameEditView.visibility = View.VISIBLE
-              userNameTextView.visibility = View.GONE
-          } else {
-              btn.text = "Change User"
-              userNameTextView.text = userNameEditView.text.toString()
-              userNameEditView.visibility = View.GONE
-              userNameTextView.visibility = View.VISIBLE
-          }
-      }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("plays", totalPlays)
+        super.onSaveInstanceState(outState)
     }
-
 
     private fun playButtonClicked(plays: TextView): TextView {
         var currentPlays = plays.text.toString().toInt()
+        totalPlays = currentPlays + 1
         plays.text = (currentPlays + 1).toString()
         return plays
     }
@@ -95,8 +99,10 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
+    }
 }
 
-private fun albumLongClick(function: (playsNumber: TextView) -> Unit) {
-
-}
