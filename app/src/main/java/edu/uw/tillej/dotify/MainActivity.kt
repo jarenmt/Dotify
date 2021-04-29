@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
 
             plays.text = totalPlays.toString()
 
+            settings.setOnClickListener{
+                song?.let { it1 -> navigateToSettingsActivity(this@MainActivity, it1, totalPlays) }
+            }
+
         albumCover.setOnLongClickListener{
             var color = Color.argb(Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256), Random.nextInt(0, 256))
             plays.setTextColor(color)
@@ -65,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             playButtonClicked(plays)
         }
 
-        val prevButton = findViewById<ImageView>(R.id.previousButton)
             previousButton.setOnClickListener{
             prevButtonClicked()
         }
