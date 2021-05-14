@@ -1,4 +1,4 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

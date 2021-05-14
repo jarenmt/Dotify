@@ -1,4 +1,4 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import com.ericchee.songdataprovider.Song
+import edu.uw.tillej.dotify.R
 import edu.uw.tillej.dotify.databinding.ActivitySettingsBinding
 import java.security.AccessController
 

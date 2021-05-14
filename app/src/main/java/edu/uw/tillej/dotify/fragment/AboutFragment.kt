@@ -1,12 +1,12 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import edu.uw.tillej.dotify.BuildConfig
 import edu.uw.tillej.dotify.databinding.FragmentAboutBinding
-import edu.uw.tillej.dotify.databinding.FragmentProfileBinding
 
 
 class AboutFragment : Fragment() {

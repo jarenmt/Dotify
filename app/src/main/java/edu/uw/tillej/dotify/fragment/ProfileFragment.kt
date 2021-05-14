@@ -1,4 +1,4 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

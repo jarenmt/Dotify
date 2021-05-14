@@ -1,4 +1,4 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.ericchee.songdataprovider.Song

@@ -1,4 +1,4 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
 import com.ericchee.songdataprovider.Song
+import edu.uw.tillej.dotify.DotifyApplication
+import edu.uw.tillej.dotify.R
 import edu.uw.tillej.dotify.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -32,6 +34,7 @@ fun navigateToMainActivity(context: Context, song: Song) = with(context) {
 
 class MainActivity : AppCompatActivity() {
 
+//    private val dotifyApp: DotifyApplication by lazy { application as DotifyApplication }
     private lateinit var binding: ActivityMainBinding
     private var totalPlays = 0;
     private  var editUser = false;

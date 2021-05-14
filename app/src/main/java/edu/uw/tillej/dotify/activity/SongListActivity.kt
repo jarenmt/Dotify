@@ -1,4 +1,5 @@
-package edu.uw.tillej.dotify
+package edu.uw.tillej.dotify.activity
+
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +8,10 @@ import android.view.View
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
+import edu.uw.tillej.dotify.R
+import edu.uw.tillej.dotify.adapter.SongListAdapter
 import edu.uw.tillej.dotify.databinding.ActivitySongListBinding
+
 
 
 const val SONGS = "SONGS_LIST"
