@@ -42,6 +42,10 @@ class SettingsFragment : Fragment() {
                 navController.navigate(NavGraphDirections.actionGlobalAboutFragment())
             }
 
+            artistListButton.setOnClickListener{
+                navController.navigate(NavGraphDirections.actionGlobalArtistListFragment())
+            }
+
         }
 
         return binding.root

@@ -48,4 +48,12 @@
     <action
         android:id="@+id/action_global_aboutFragment"
         app:destination="@id/aboutFragment" />
+    <fragment
+        android:id="@+id/artistListFragment"
+        android:name="edu.uw.tillej.dotify.fragment.ArtistListFragment"
+        android:label="fragment_artist_list"
+        tools:layout="@layout/fragment_artist_list" />
+    <action
+        android:id="@+id/action_global_artistListFragment"
+        app:destination="@id/artistListFragment" />
 </navigation>
