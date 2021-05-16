@@ -75,6 +75,11 @@ class SongListActivity : AppCompatActivity() {
 
             adapter.songOnLongClickListener = { pos: Int, _: Song ->
                 // pasted in here just for testing
+                lifecycleScope.launch {
+                    Log.i("LEBRON", "ENTERED")
+                    val artists = dataRepository.getAllArtist()
+                    Log.i("LEBRON JAMES", artists.toString())
+                }
 //                lifecycleScope.launch {
 //                    runCatching {
 //                        Log.i("LEBRON", "ENTERED")

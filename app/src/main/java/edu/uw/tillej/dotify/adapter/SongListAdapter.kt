@@ -33,6 +33,7 @@ class SongListAdapter(private var listofSongs: List<Song>): RecyclerView.Adapter
 
             root.setOnLongClickListener{
                 songOnLongClickListener(position, song)
+                notifyDataSetChanged()
                 true
             }
         }
