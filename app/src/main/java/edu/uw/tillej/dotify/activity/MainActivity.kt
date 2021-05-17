@@ -9,11 +9,13 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.lifecycleScope
 import com.ericchee.songdataprovider.Song
 import edu.uw.tillej.dotify.DotifyApplication
 import edu.uw.tillej.dotify.R
 import edu.uw.tillej.dotify.databinding.ActivityMainBinding
 import edu.uw.tillej.dotify.manager.MusicManager
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 private const val SONG = "song"
@@ -44,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             totalPlays = savedInstanceState.getInt("plays", 0)
         }
+
         with(binding) {
 //            val song: Song? = intent.getParcelableExtra<Song>(SONG) this is now pulled from application
 
@@ -103,7 +106,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun nextButtonClicked() {
-        Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
         musicManager.nextSong()
         finish()
         startActivity(Intent(this, MainActivity::class.java))

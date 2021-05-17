@@ -4,8 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
+import edu.uw.tillej.dotify.R
 import edu.uw.tillej.dotify.databinding.ItemArtistBinding
 import edu.uw.tillej.dotify.model.Artist
+import edu.uw.tillej.dotify.model.ArtistList
 
 class ArtistListAdapter(private var listOfArtists: List<Artist>): RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> () {
     class ArtistViewHolder(val binding: ItemArtistBinding): RecyclerView.ViewHolder(binding.root)
@@ -19,7 +23,11 @@ class ArtistListAdapter(private var listOfArtists: List<Artist>): RecyclerView.A
         val artist: Artist = listOfArtists[position]
         with(holder.binding) {
             itemArtistName.text = artist.name
-//            itemArtistProfilePic.setImageResource(artist.smallImageURL)
+            itemArtistProfilePic.load(artist.smallImageURL){
+                crossfade(true)
+                placeholder(R.drawable.lord_revan)
+                transformations(CircleCropTransformation())
+            } // crossfade just for fun
         }
     }
 

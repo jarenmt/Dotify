@@ -35,7 +35,6 @@ class SongListActivity : AppCompatActivity() {
 
         this.musicManager = dotifyApp.musicManager
 
-
         with(binding) {
 //             could maybe use elvis operator here but probably more confusing
             if (savedInstanceState != null) {
@@ -74,21 +73,6 @@ class SongListActivity : AppCompatActivity() {
             }
 
             adapter.songOnLongClickListener = { pos: Int, _: Song ->
-                // pasted in here just for testing
-                lifecycleScope.launch {
-                    Log.i("LEBRON", "ENTERED")
-                    val artists = dataRepository.getAllArtist()
-                    Log.i("LEBRON JAMES", artists.toString())
-                }
-//                lifecycleScope.launch {
-//                    runCatching {
-//                        Log.i("LEBRON", "ENTERED")
-//                        val artists = dataRepository.getAllArtist()
-//                        Log.i("LEBRON JAMES", artists.toString())
-//                    }.onFailure {
-//                Toast.makeText(this@SongListActivity, "Load Failed", Toast.LENGTH_SHORT).show()
-//            }
-//                }
                 Toast.makeText(this@SongListActivity, "Song removed", Toast.LENGTH_SHORT).show()
                 val newSongsList = currentSongsList.toMutableList()
                 newSongsList.removeAt(pos)
