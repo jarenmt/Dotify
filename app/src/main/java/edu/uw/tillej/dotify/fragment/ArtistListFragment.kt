@@ -42,7 +42,6 @@ class ArtistListFragment : Fragment() {
             }
         }
 
-
         loadArtists()
 
         return binding.root
@@ -53,7 +52,6 @@ class ArtistListFragment : Fragment() {
             runCatching {
                 Toast.makeText(activity, "loading...", Toast.LENGTH_SHORT).show()
                 val artists = dataRepo.getAllArtist()
-
                 val adapter = ArtistListAdapter(artists.artists)
                 binding.avArtists.adapter = adapter
 

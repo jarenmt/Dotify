@@ -55,6 +55,12 @@ class SongListActivity : AppCompatActivity() {
             }
             currentSongsList = musicManager.currentSongsList
 
+
+            lifecycleScope.launch {
+                val test = dataRepository.getAllArtist()
+                Log.i("LEBRON", test.artists.toString())
+            }
+
             val adapter = SongListAdapter(currentSongsList)
             rvSongs.adapter = adapter
             btnRefresh.setOnClickListener() {
