@@ -4,4 +4,8 @@
     <string name="songs_list_title">All Songs</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="random_song_notif_title">%s just released a new song!</string>
+    <string name="random_song_notif_description">Listen %s to now on Dotify</string>
+    <string name="random_song_channel_title">New Uploaded Music</string>
+    <string name="random_song_channel_description">Listen %s to now on Dotify</string>
 </resources>

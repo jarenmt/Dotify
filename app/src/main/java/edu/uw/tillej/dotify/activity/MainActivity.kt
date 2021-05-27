@@ -20,7 +20,7 @@ import kotlin.random.Random
 
 private const val SONG = "song"
 
-fun navigateToMainActivity(context: Context) = with(context) {
+fun navigateToMainActivity(context: Context,) = with(context) {
     // take the person object send it to
 
     val intent = Intent(this, MainActivity::class.java) // declare to launch PersonDetailActi
