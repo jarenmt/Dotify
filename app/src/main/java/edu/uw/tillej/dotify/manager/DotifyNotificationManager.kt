@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
 import com.ericchee.songdataprovider.Song
 import edu.uw.tillej.dotify.DotifyApplication
 import edu.uw.tillej.dotify.R
@@ -44,7 +43,7 @@ class DotifyNotificationManager(
             // Define the intent or action you want when user taps on notification
             val intent = Intent(context, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                musicManager.setCurrentSong(randomSong)
+                musicManager.setCurrentSong(randomSong) // sets current song in music manager
 //               putExtra(EMAIL_INFO_KEY, "This string is coming from the notification")
             }
             val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over

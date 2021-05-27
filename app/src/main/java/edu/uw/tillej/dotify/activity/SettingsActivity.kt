@@ -31,6 +31,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater).apply{setContentView(root)}
 
+
         with(binding) {
             title = "Settings"
 

@@ -14,6 +14,7 @@ import edu.uw.tillej.dotify.DotifyApplication
 import edu.uw.tillej.dotify.R
 import edu.uw.tillej.dotify.adapter.SongListAdapter
 import edu.uw.tillej.dotify.databinding.ActivitySongListBinding
+import edu.uw.tillej.dotify.manager.DotifyWorkManager
 import edu.uw.tillej.dotify.manager.MusicManager
 import edu.uw.tillej.dotify.repository.DataRepository
 import kotlinx.coroutines.launch
@@ -29,12 +30,13 @@ class SongListActivity : AppCompatActivity() {
 
     private val dotifyApp: DotifyApplication by lazy {application as DotifyApplication}
     private val dataRepository: DataRepository by lazy { dotifyApp.dataRepo }
+    private val dotifyWorkManager: DotifyWorkManager by lazy { dotifyApp.dotifyWorkManager }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         this.musicManager = dotifyApp.musicManager
-
+        dotifyWorkManager.randomSongPeriodically()
         with(binding) {
 //             could maybe use elvis operator here but probably more confusing
             if (savedInstanceState != null) {

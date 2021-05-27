@@ -17,7 +17,7 @@ class DotifyWorker(context: Context, workerParams: WorkerParameters): CoroutineW
             val newRandomSong = SongDataProvider.getAllSongs().random()
 
             // NotificationManager, notify new emails have arrived
-
+            Log.i("LEBRON", "LEBRON")
             notificationManager.publishRandomSongNotification(newRandomSong)
 
             Result.success()
