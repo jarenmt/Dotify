@@ -19,14 +19,12 @@ private const val RANDOM_SONG_CHANNEL_ID = "NEW_EMAILS_CHANNEL_ID"
 class DotifyNotificationManager(
         private val context: Context
     ) {
-
-
     private val notificationManager = NotificationManagerCompat.from(context)
     private val application by lazy { context.applicationContext as DotifyApplication }
     private val musicManager by lazy { application.musicManager }
 //    private val dotifyApp: DotifyApplication by lazy { application as DotifyApplication }
 
-        var isNotificationsEnabled = true
+    var isNotificationsEnabled = true
 
         init {
             // Initialize all channels

@@ -36,7 +36,6 @@ class SongListActivity : AppCompatActivity() {
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         this.musicManager = dotifyApp.musicManager
-        dotifyWorkManager.randomSongPeriodically()
         with(binding) {
 //             could maybe use elvis operator here but probably more confusing
             if (savedInstanceState != null) {
